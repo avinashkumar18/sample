@@ -1,0 +1,104 @@
+openapi: 3.1.0
+info:
+  title: Swagger  - OpenAPI 3.1
+  description: |-
+    PokéAPI is free and open to use. It is also very popular. Because of this, we ask every developer to abide by our fair use policy. People not complying with the fair use policy will have their IP address permanently banned.
+
+    PokéAPI is primarily an educational tool, and we will not tolerate denial of service attacks preventing people from learning.
+
+    Rules:
+
+    Locally cache resources whenever you request them.
+    Be nice and friendly to your fellow PokéAPI developers.
+  version: 1.0.1
+
+servers:
+  - url: https://pokeapi.co/api/v2
+
+paths:
+  /berry:
+    get:
+      tags:
+        - berry
+      summary: Berries are small fruits
+      description: List berries
+      operationId: getBerries
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Berry'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Pet not found
+        '405':
+          description: Validation exception
+   
+
+components:
+  schemas:
+    Berry:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        growth_time:
+          type: integer
+          format: int32
+        max_harvest:
+          type: integer
+          format: int32
+        natural_gift_power:
+          type: integer
+          format: int32
+        size:
+          type: integer
+          format: int32
+        smoothness:
+          type: integer
+          format: int32
+        soil_dryness:
+          type: integer
+          format: int32
+        firmness:
+          type: object
+          properties:
+            name:
+              type: string
+            url:
+              type: string
+        flavors:
+          type: array
+          items:
+            type: object
+            properties:
+              potency:
+                type: integer
+                format: int32
+              flavor:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  url:
+                    type: string
+        item:
+          type: object
+          properties:
+            name:
+              type: string
+            url:
+              type: string
+        natural_gift_type:
+          type: object
+          properties:
+            name:
+              type: string
+            url:
+              type: string
